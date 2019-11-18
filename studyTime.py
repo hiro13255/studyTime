@@ -8,7 +8,7 @@ def menu():
 #入力
 def studyInput():
     print("学習時間を入力してください ->")
-    time = int(input())
+    time = input()
     return time
     
 #終了
@@ -47,10 +47,10 @@ if __name__ == "__main__":
     while True:
 
         menu()
-        input_line = int(input())
+        input_line = input()
 
         #目標値入力
-        if 1 == input_line:
+        if "1" == input_line:
             f = open(path, mode='r')
             ing = f.readline()
             print("現在設定されている目標時間は" + ing + "時間です。")
@@ -68,27 +68,27 @@ if __name__ == "__main__":
                 print("メニューに戻ります")
 
         #学習時間入力
-        elif 2 == input_line:
+        elif "2" == input_line:
             #読み込み
             fTotal = open(path_total,mode='r')
             writeTime = fTotal.readlines()
             time = studyInput()
             writeTime1 = int(writeTime[0])
-            ans = writeTime1 + time
+            ans = writeTime1 + int(time)
             #書き込み
             fTotal = open(path_total,mode='w')
             fTotal.write(str(ans))
             fTotal.close()
 
         #今までの学習時間を確認
-        elif 3 == input_line:
+        elif "3" == input_line:
             fTotal = open(path_total,mode='r')
             totalTime = fTotal.readline()
             print("あなたが今まで学習した時間は" + totalTime+ "時間です")
             fTotal.close()
 
         #目標と結果の差分
-        elif 4 == input_line:
+        elif "4" == input_line:
             f = open(path,mode='r')
             writeGoalTime = f.readlines()
 
@@ -104,10 +104,11 @@ if __name__ == "__main__":
             fTotal.close()
 
         #終了
-        elif 5 == input_line:
+        elif "5" == input_line:
             inputEnd()
             print("--------------------------------------------------")
             break
+
         else:
             print("指定した番号を入力してください")
 
